@@ -1,0 +1,28 @@
+* {
+  text-align: center;
+}
+
+body{
+  font-family: "Josefin Sans", "Poppins", "Futura", "sans-serif";
+  text-align: center;
+  background-color: #ddb492;
+}
+
+.firstGif{
+  width: 40%;
+}
+
+.bookFront {
+  width: 65%;
+
+}
+
+.homeLinks {
+  text-align: center;
+  margin-top: 2%;
+  font-size: 2em;
+}
+
+.nav {
+  background-color:antiquewhite;
+}
