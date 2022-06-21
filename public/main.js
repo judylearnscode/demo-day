@@ -23,9 +23,9 @@ Array.from(trash).forEach(function(element) {
             'title': title,
             'author': author,
           })
-      }).then(function (response) {
-            window.location.reload()
-          })
+        }).then(function (response) {
+          window.location.reload()
+        })
         })
       });
 
