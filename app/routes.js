@@ -1,3 +1,5 @@
+const user = require("./models/user");
+
 module.exports = function(app, passport, db) {
 
 // normal routes ===============================================================
@@ -12,33 +14,74 @@ module.exports = function(app, passport, db) {
 
     // PROFILE SECTION =========================
     app.get('/profile', isLoggedIn, function(req, res) {
-        db.collection('lines').find().toArray((err, result) => {
+      db.collection('recipes').find().toArray((err, result) => {
+        if (err) return console.log(err)
+        res.render('profile.ejs', {
+          user : req.user,
+          recipes: result,
+        })
+      })
+        db.collection('users').find().toArray((err, result) => {
           if (err) return console.log(err)
           res.render('profile.ejs', {
             user : req.user,
-            lines: result
           })
         })
     });
 
-    app.get('/updateForm', isLoggedIn, function(req, res) {
-      db.collection('messages').find().toArray((err, result) => {
-        if (err) return console.log(err)
-        res.render('update.ejs', {
-          user : req.user,
-          messages: result
-        })
+  //   app.get('/updateForm', isLoggedIn, function(req, res) {
+  //     db.collection('messages').find().toArray((err, result) => {
+  //       if (err) return console.log(err)
+  //       res.render('update.ejs', {
+  //         user : req.user,
+  //         messages: result
+  //       })
+  //     })
+  // });
+
+  app.get('/contents', isLoggedIn, function(req, res) {
+    db.collection('recipes').find().toArray((err, result) => {
+      if (err) return console.log(err)
+      res.render('contents.ejs', {
+        user : req.user,
+        recipes: result
       })
-  });
+    })
+});
+
+
 
   app.get('/photos', isLoggedIn, function(req, res) {
     db.collection('lines').find().toArray((err, result) => {
       if (err) return console.log(err)
       res.render('photos.ejs', {
         user : req.user,
-        lines: result
+        recipes: result
       })
     })
+});
+
+app.get('/userProfile', isLoggedIn, function(req, res) {
+  if (req.user.local.superStarRecipe) {
+    // find the user's superStarRecipe and make it available to the thing that renders it (user profile.ejs) and find all the user's recipes and make that list available to userProfile.ejs to populate the pull down list
+  // db.collection('recipes').findOne({'_id': req.user.local.superStarRecipe},(err, result)) => {
+  }
+  db.collection('users').find().toArray((err, result) => {
+    if (err) return console.log(err)
+    res.render('userProfile.ejs', {
+      user : req.user,
+    })
+  })
+});
+
+app.get('/ourRecipes', isLoggedIn, function(req, res) {
+  db.collection('recipes').find().toArray((err, result) => {
+    if (err) return console.log(err)
+    res.render('ourRecipes.ejs', {
+      user : req.user,
+      recipes: result
+    })
+  })
 });
 
     // LOGOUT ==============================
@@ -47,16 +90,37 @@ module.exports = function(app, passport, db) {
         res.redirect('/');
     });
 
+    // ----------------- upload page 
+
+    app.get('/uploadRecipe', isLoggedIn, function(req, res) {
+      // db.collection('users').find().
+      db.collection('recipes').find().toArray((err, result) => {
+        if (err) return console.log(err)
+        res.render('uploadRecipe.ejs', {
+          user : req.user,
+          recipes: result,
+        })
+      })
+  });
+
 // message board routes ===============================================================
 
-    app.post('/postLine', (req, res) => {
-      db.collection('lines').save({
-        name: req.body.name, 
-        line: req.body.line
+    app.post('/postRecipe', async(req, res) => {
+        console.log('this is body', req.body)
+        console.log('this is user', req.user)
+      db.collection('recipes').save({
+        // user: req.body.local.email,
+        title: req.body.title, 
+        author: req.body.author, 
+        bg: req.body.bg, 
+        ingredients: req.body.ingredients, 
+        instructions: req.body.instructions, 
+        recipeUser: req.user._id,
+        recipeUserEmail: req.user.local.email
       }, (err, result) => {
         if (err) return console.log(err)
         console.log('saved to database')
-        res.redirect('/profile')
+        res.redirect('/uploadRecipe')
       })
     })
 
@@ -80,7 +144,7 @@ module.exports = function(app, passport, db) {
     })
 
     // app.put('/messages', (req, res) => {
-    //   db.collection('messages')
+    //   db.collection('recipes')
     //   .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, {
     //     $set: {
     //       thumbUp:req.body.thumbUp + 1
@@ -109,21 +173,13 @@ module.exports = function(app, passport, db) {
     //   })
     // })
 
-    app.delete('/profile', (req, res) => {
-      db.collection('lines').deleteMany({},(err, result) => {
+    app.delete('/deleteRecipe', (req, res) => {
+      db.collection('recipes').findOneAndDelete({title: req.body.title, author: req.body.author},(err, result) => {
         if (err) return res.send(500, err)
-        res.send('deleted')
+        res.send('delete')
       })
     })
-    
-    app.delete('/profile', (req, res) => {
-      db.collection('lines').deleteMany({
-        name: req.user.local.name
-      },(err, result) => {
-        if (err) return res.send(500, err)
-        res.send('deleted')
-      })
-    })
+  
 
 // =============================================================================
 // AUTHENTICATE (FIRST LOGIN) ==================================================

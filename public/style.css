@@ -5,7 +5,7 @@
 body{
   font-family: "Josefin Sans", "Poppins", "Futura", "sans-serif";
   text-align: center;
-  background-color: #ddb492;
+  background-color: #c6d1c7;
 }
 
 .firstGif{
@@ -13,8 +13,8 @@ body{
 }
 
 .bookFront {
-  width: 65%;
-
+  width: 53%;
+  margin-top: 1em;
 }
 
 .homeLinks {
@@ -23,6 +23,15 @@ body{
   font-size: 2em;
 }
 
-.nav {
-  background-color:antiquewhite;
+.navbar-inverse {
+  background-color: #c6d1c7;
+  border-color: #000000;
+}
+
+h2, h3 {
+  font-family: "Josefin Sans", "Poppins", "Futura", "sans-serif";
+}
+
+a {
+  color: rgb(0, 0, 0);
 }

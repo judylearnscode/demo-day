@@ -1,0 +1,59 @@
+* {
+  text-align: center;
+}
+
+body{
+  font-family: "Josefin Sans", "Poppins", "Futura", "sans-serif";
+  text-align: center;
+  background-color: #c6d1c7;
+  padding-bottom: 5em;
+}
+
+
+.recipeBook {
+  margin-top: 4.5em;
+  width: 100%;
+  height: 90vh;
+  background-image: url("/img/Recipe-Open.png");
+  background-repeat: no-repeat;
+  background-position:center;
+  background-size: 100%;
+  padding: 1em 3em;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items:center;
+  overflow: hidden;
+}
+
+.recipeBookLeft{
+  width: 40%;
+  height: 80%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 0px 60px;
+}
+
+.recipeBookRight {
+  width: 40%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 80%;
+  padding: 0px 60px;
+}
+
+li {
+  list-style-type: none;
+}
+.homeLinks {
+  text-align: center;
+  font-size: 2em;
+}
+
+button {
+  color:black;
+}
+
+a {
+  color: rgb(0, 0, 0);
+}

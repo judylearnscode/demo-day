@@ -20,25 +20,29 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="/profile"><img src="img/tinybanner1.png" class="tinypic"></img></a>
+      <a href="/profile"><img src="img/tinybanner.png" class="tinypic"></img></a>
     </div>
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <ul class="nav navbar-nav navbar-right">
-        <li>
-          <a href="/uploadRecipe">Upload Recipe</a>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Recipes <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">My Profile</a></li>
+          </ul>
         </li>
         <li>
-          <a href="#">Favorite Recipes</a>
+          <a href="#">Favorited Recipes</a>
         </li>
         <li>
           <a href="#">Our Recipes</a>
         </li>
-        <li><a href="/logout">Log Out</a></li>
+         <li><a href="/logout">Log Out</a></li>
       </ul>
     </nav>
   </div>
 </header>
   <a href="/uploadRecipe"><img class="bookFront" src="img/Recipe-Front.png"></a>
+  <button><a href="/uploadRecipe">Upload Recipe</a></button>
 </div>
 
 <script src="main.js"></script>

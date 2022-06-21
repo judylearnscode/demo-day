@@ -5,12 +5,12 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="profile.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&family=Jost:ital@0;1&family=Kdam+Thmor+Pro&family=Macondo&family=Poppins:ital,wght@0,300;0,400;0,500;1,200&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/5429a7e2cf.js" crossorigin="anonymous"></script>
 </head>
+<img class="banner" src="img/banner10.png">
 <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
   <div class="container">
     <div class="navbar-header">
@@ -20,25 +20,54 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="/profile"><img src="img/tinybanner1.png" class="tinypic"></img></a>
+      <a href="./" class="navbar-brand">Family Recipes</a>
     </div>
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a href="/uploadRecipe">Upload Recipe</a>
+          <a href="#">Home</a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Recipes <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">My Profile</a></li>
+          </ul>
         </li>
         <li>
-          <a href="#">Favorite Recipes</a>
+          <a href="#">Favorited Recipes</a>
         </li>
         <li>
           <a href="#">Our Recipes</a>
         </li>
-        <li><a href="/logout">Log Out</a></li>
+         <li><a href="/logout">Log Out</a></li>
       </ul>
     </nav>
   </div>
 </header>
-  <a href="/uploadRecipe"><img class="bookFront" src="img/Recipe-Front.png"></a>
+  <a href="/contents"><img class="bookFront" src="img/Recipe-Front.png"></a>
+  <div class="recipeHere">
+
+    <% let currentPageNumber = 0 %>
+    <h3><%= currentPageNumber %></h3>
+
+    <button class="rightButton">Next Recipe</button>
+
+    <% for(let i=0; i<recipes.length; i++){%>
+    <%if (user.local.email == recipes[i].recipeUserEmail) {%>
+  
+    <div>
+      <h3><%= recipes[i].title %></h3>
+      <p>By: <%= recipes[i].author %></p>
+      <p>Background Story: <%= recipes[i].bg %></p>
+      <p>Ingredients: <%= recipes[i].ingredients %></p>
+      <p>Instructions: <%= recipes[i].instructions %></p>
+    
+    </div>
+    <%}%> 
+    <%}%>
+
+  </div>
+  <button><a href="/uploadRecipe">Upload Recipe</a></button>
 </div>
 
 <script src="main.js"></script>

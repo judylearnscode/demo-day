@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+    <title>Family Recipes</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="uploadRecipe.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&family=Jost:ital@0;1&family=Kdam+Thmor+Pro&family=Macondo&family=Poppins:ital,wght@0,300;0,400;0,500;1,200&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5429a7e2cf.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+    <div class="container">
+      <div class="navbar-header">
+        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar">something</span>
+          <span class="icon-bar">else</span>
+          <span class="icon-bar">here</span>
+        </button>
+        <a href="/profile"><img src="img/tinybanner1.png" class="tinypic"></img></a>
+      </div>
+      <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="/uploadRecipe">Upload Recipe</a>
+          </li>
+          <li>
+            <a href="#">Favorite Recipes</a>
+          </li>
+          <li>
+            <a href="/ourRecipes">Our Recipes</a>
+          </li>
+          <li><a href="/logout">Log Out</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<div class="recipeBook">
+<div class="recipeBookLeft">
+<div class="mt-5">
+  <h2>Add a recipe</h2>
+  <form action="/postRecipe" method="POST">
+    <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" name="title">
+    </div>
+
+    <div class="mb-3">
+      <label for="author" class="form-label">Author</label>
+      <textarea class="form-control" id="author" name="author"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="bg" class="form-label" >Background Story</label>
+      <textarea class="form-control" id="bg" name="bg" placeholder="Share the background story of this dish and why it's special to you."></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="ingredients" class="form-label">Ingredients</label>
+      <textarea class="form-control" id="ingredients" name="ingredients"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="instructions" class="form-label">Instructions</label>
+      <textarea class="form-control" id="instructions" name="instructions"></textarea>
+    </div> 
+    <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+  </form>
+</div>
+</div>
+
+<div class="recipeBookRight">
+
+
+  <% for(let i=0; i<recipes.length; i++){%>  
+  <%if (user.local.email == recipes[i].recipeUserEmail) {%>
+
+    <div class="recipeHere">
+      <span class="deleteMe">delete</span>
+      <h3><%= recipes[i].title %></h3>
+      <p>By: <span><%= recipes[i].author %></span></p>
+      <p>Background Story: <%= recipes[i].bg %></p>
+      <p>Ingredients: <%= recipes[i].ingredients %></p>
+      <p>Instructions: <%= recipes[i].instructions %></p>
+    </div>
+
+  <%}%> 
+  <%}%> 
+  <button class="rightButton">Next Recipe</button>
+</div>
+</div>
+
+
+<script src="main.js"></script>
+
+</body>
+</html>
+
+
+
+
+
