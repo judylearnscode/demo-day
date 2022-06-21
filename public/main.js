@@ -12,16 +12,13 @@ const trash = document.getElementsByClassName("fa-solid fa-trash-can");
 
 Array.from(trash).forEach(function(element) {
       element.addEventListener('click', function(){
-            console.log(this.parentNode.childNodes[5].childNodes)
-        const title = this.parentNode.childNodes[3].innerText
-        const author = this.parentNode.childNodes[5].childNodes[1].innerText
-            console.log(title, author)
+        const recipeId = this.parentNode.childNodes[3].innerText
+          console.log (this.parentNode.childNodes[3].innerText)
         fetch('deleteRecipe', {
           method: 'delete',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({
-            'title': title,
-            'author': author,
+            '_id': recipeId,
           })
         }).then(function (response) {
           window.location.reload()

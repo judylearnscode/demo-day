@@ -1,3 +1,4 @@
+const { ObjectId } = require("mongodb");
 const user = require("./models/user");
 
 module.exports = function(app, passport, db) {
@@ -174,7 +175,7 @@ app.get('/ourRecipes', isLoggedIn, function(req, res) {
     // })
 
     app.delete('/deleteRecipe', (req, res) => {
-      db.collection('recipes').findOneAndDelete({title: req.body.title, author: req.body.author},(err, result) => {
+      db.collection('recipes').findOneAndDelete({_id: ObjectId(req.body._id)},(err, result) => {
         if (err) return res.send(500, err)
         res.send('delete')
       })

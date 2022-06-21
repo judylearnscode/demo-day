@@ -77,12 +77,12 @@
 
 <div class="recipeBookRight">
 
-
   <% for(let i=0; i<recipes.length; i++){%>  
   <%if (user.local.email == recipes[i].recipeUserEmail) {%>
 
     <div class="recipeHere">
       <i class="fa-solid fa-trash-can"></i>
+      <span class="hidden"><%= recipes[i]._id %></span>
       <h3><%= recipes[i].title %></h3>
       <p>By: <span><%= recipes[i].author %></span></p>
       <p>Background Story: <%= recipes[i].bg %></p>
