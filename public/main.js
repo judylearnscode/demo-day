@@ -8,7 +8,7 @@
 // })
 
 // var thumbDown = document.getElementsByClassName("fa-thumbs-down");
-const trash = document.getElementsByClassName("deleteMe");
+const trash = document.getElementsByClassName("fa-solid fa-trash-can");
 
 Array.from(trash).forEach(function(element) {
       element.addEventListener('click', function(){
@@ -23,15 +23,11 @@ Array.from(trash).forEach(function(element) {
             'title': title,
             'author': author,
           })
-        })
-        .then(response => {
-          if (response.ok) return response.json()
-        })
-        .then(data => {
-          window.location.reload(true)
+      }).then(function (response) {
+            window.location.reload()
+          })
         })
       });
-});
 
 // Array.from(thumbDown).forEach(function(element) {
 //   element.addEventListener('click', function(){

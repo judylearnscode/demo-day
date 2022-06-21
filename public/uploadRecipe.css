@@ -57,3 +57,12 @@ button {
 a {
   color: rgb(0, 0, 0);
 }
+
+.hideMe {
+  display: none;
+}
+
+
+.recipeHere + .hideMe {
+  display: block;
+}

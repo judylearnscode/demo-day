@@ -82,7 +82,7 @@
   <%if (user.local.email == recipes[i].recipeUserEmail) {%>
 
     <div class="recipeHere">
-      <span class="deleteMe">delete</span>
+      <i id="hideMe" class="fa-solid fa-trash-can"></i>
       <h3><%= recipes[i].title %></h3>
       <p>By: <span><%= recipes[i].author %></span></p>
       <p>Background Story: <%= recipes[i].bg %></p>
@@ -92,7 +92,7 @@
 
   <%}%> 
   <%}%> 
-  <button class="rightButton">Next Recipe</button>
+  <!-- <button class="rightButton">Next Recipe</button> -->
 </div>
 </div>
 
