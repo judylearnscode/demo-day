@@ -69,6 +69,24 @@ button {
   margin-top: 1em;
 }
 
-.hidden {
-  display:none;
+.recipeHere {
+  position:relative;
 }
+
+.recipeHere:hover {
+  border: 1px solid red;
+  padding: 8px, 8px;
+  border-radius: 8px;
+}
+
+.recipeHere:hover .trashCan {
+  display: inline;
+}
+
+.recipeHere .trashCan {
+  position:absolute;
+  right: 0;
+  display:none;
+  margin: 8px, 8px;
+}
+
