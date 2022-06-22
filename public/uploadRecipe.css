@@ -40,7 +40,7 @@ body{
   overflow-x: hidden;
   overflow-y: auto;
   height: 90%;
-  padding: 0px 60px;
+  padding: 0px 70px;
 }
 
 li {
@@ -133,6 +133,10 @@ button:focus {
 span {
   font-size: 1.25em;
   font-weight: bold;
+}
+
+h2 {
+  color: rgb(36, 72, 144);
 }
 
 h3 {
