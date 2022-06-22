@@ -46,27 +46,27 @@
   <form action="/postRecipe" method="POST">
     <div class="mb-3">
         <label for="title" class="form-label">Title</label>
-        <input type="text" class="form-control" id="title" name="title">
+        <input type="text" class="form-control" id="title" name="title" required>
     </div>
 
     <div class="mb-3">
       <label for="author" class="form-label">Author</label>
-      <input type="text" class="form-control" id="author" name="author">
+      <input type="text" class="form-control" id="author" name="author" required>
     </div>
 
     <div class="mb-3">
       <label for="bg" class="form-label" >Background Story</label>
-      <textarea class="form-control" id="bg" name="bg" placeholder="Share the background story of this dish and why it's special to you."></textarea>
+      <textarea class="form-control" id="bg" name="bg" required placeholder="Share the background story of this dish and why it's special to you."></textarea>
     </div>
 
     <div class="mb-3">
       <label for="ingredients" class="form-label">Ingredients</label>
-      <textarea class="form-control" id="ingredients" name="ingredients"></textarea>
+      <textarea class="form-control" id="ingredients" name="ingredients" required></textarea>
     </div>
 
     <div class="mb-3">
       <label for="instructions" class="form-label">Instructions</label>
-      <textarea class="form-control" id="instructions" name="instructions"></textarea>
+      <textarea class="form-control" id="instructions" name="instructions" required></textarea>
     </div> 
     <button type="submit" class="button-45" value="Upload">Submit</button>
   </form>
