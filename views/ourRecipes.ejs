@@ -30,10 +30,7 @@
             <a href="/uploadRecipe">Upload Recipe</a>
           </li>
           <li>
-            <a href="#">Favorite Recipes</a>
-          </li>
-          <li>
-            <a href="/ourRecipes">Our Recipes</a>
+            <a href="/ourProfile">Our Recipes</a>
           </li>
           <li><a href="/logout">Log Out</a></li>
         </ul>
@@ -42,15 +39,13 @@
   </header>
 
   <div class="recipeBook">
-  <div class="recipeBookLeft">
-  <div class="recipeHere">
-
-    <!-- <% let currentPageNumber = 0 %>
-    <h3><%= currentPageNumber %></h3> -->
-
-    <button class="randomButton">Random Recipe</button>
-  
-    <div>
+    <div class="recipeBookLeft">
+        <p class="introP">Our Recipes is a collective recipe book created by all of you! </p>
+        <p class="introP">Click the button to generate a random recipe by a fellow Family Recipes user. :-)</p>
+        <button class="randomButton">Random Recipe</button>
+      </div>
+  <div class="recipeBookRight">
+      
       <h3><%= recipe.title %></h3>
       <p>By: <%= recipe.author %></p>
       <p>Background Story: <%= recipe.bg %></p>
@@ -62,7 +57,7 @@
   </div>
 </div>
 </div>
-</div>
+
 
 <script src="main.js"></script>
 

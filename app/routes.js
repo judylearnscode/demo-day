@@ -40,6 +40,22 @@ module.exports = function(app, passport, db) {
   //     })
   // });
 
+  app.get('/ourProfile', isLoggedIn, function(req, res) {
+    db.collection('recipes').find().toArray((err, result) => {
+      if (err) return console.log(err)
+      res.render('ourProfile.ejs', {
+        user : req.user,
+        recipes: result,
+      })
+    })
+      db.collection('users').find().toArray((err, result) => {
+        if (err) return console.log(err)
+        res.render('ourProfile.ejs', {
+          user : req.user,
+        })
+      })
+  });
+
   app.get('/contents', isLoggedIn, function(req, res) {
     db.collection('recipes').find().toArray((err, result) => {
       if (err) return console.log(err)
@@ -75,23 +91,23 @@ app.get('/userProfile', isLoggedIn, function(req, res) {
   })
 });
 
-app.get('/ourRecipes', isLoggedIn, function(req, res) {
-  db.collection('recipes').find({recipeUserEmail: req.user.local.email}).toArray((err, result) => {
-    if (err) return console.log(err)
-    const randomRecipe =  result[Math.floor(Math.random()*result.length)] 
-    res.render('ourRecipes.ejs', {
-      user : req.user,
-      recipe: randomRecipe
-    })
-  })
-});
+// app.get('/ourRecipes', isLoggedIn, function(req, res) {
+//   db.collection('recipes').find({recipeUserEmail: req.user.local.email}).toArray((err, result) => {
+//     if (err) return console.log(err)
+//     const randomRecipe =  result[Math.floor(Math.random()*result.length)] 
+//     res.render('ourRecipes.ejs', {
+//       user : req.user,
+//       recipe: randomRecipe
+//     })
+//   })
+// });
 
-app.get('/notOurRecipes', isLoggedIn, function(req, res) {
+app.get('/ourRecipes', isLoggedIn, function(req, res) {
   db.collection('recipes').find().toArray((err, result) => {
     if (err) return console.log(err)
     const filteredRecipes = result.filter(recipe=>recipe.recipeUserEmail !== req.user.local.email)
     const randomRecipe = filteredRecipes[Math.floor(Math.random()*filteredRecipes.length)] 
-    res.render('notOurRecipes.ejs', {
+    res.render('ourRecipes.ejs', {
       user : req.user,
       recipe: randomRecipe
     })
