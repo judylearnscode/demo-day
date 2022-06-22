@@ -68,7 +68,7 @@
       <label for="instructions" class="form-label">Instructions</label>
       <textarea class="form-control" id="instructions" name="instructions"></textarea>
     </div> 
-    <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+    <button type="submit" class="button-45" value="Upload">Submit</button>
   </form>
 </div>
 </div>
@@ -82,12 +82,13 @@
       <i class="fa-solid fa-trash-can trashCan"></i>
       <span class="hidden"><%= recipes[i]._id %></span>
       <h3><%= recipes[i].title %></h3>
-      <p>By: <span><%= recipes[i].author %></span></p>
-      <p>Background Story: <%= recipes[i].bg %></p>
-      <p>Ingredients: <%= recipes[i].ingredients %></p>
-      <p>Instructions: <%= recipes[i].instructions %></p>
-    </div>
 
+      <span>By: </span><span><%= recipes[i].author %></span>
+      <br><br>
+      <span>Background Story: </span><p><%= recipes[i].bg %></p>
+      <span>Ingredients: </span><p><%= recipes[i].ingredients %></p>
+      <span>Instructions: </span><p><%= recipes[i].instructions %></p>
+    </div>
   <%}%> 
   <%}%> 
   <!-- <button class="rightButton">Next Recipe</button> -->

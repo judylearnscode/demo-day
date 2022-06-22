@@ -11,7 +11,7 @@ body{
 
 
 .recipeBook {
-  margin-top: 4.5em;
+  margin-top: 4em;
   width: 100%;
   height: 90vh;
   background-image: url("/img/Recipe-Open.png");
@@ -28,7 +28,7 @@ body{
 
 .recipeBookLeft{
   width: 40%;
-  height: 80%;
+  height: 90%;
   overflow-x: hidden;
   overflow-y: auto;
   padding: 0px 60px;
@@ -36,10 +36,10 @@ body{
 }
 
 .recipeBookRight {
-  width: 40%;
+  width: 38%;
   overflow-x: hidden;
   overflow-y: auto;
-  height: 80%;
+  height: 90%;
   padding: 0px 60px;
 }
 
@@ -56,27 +56,68 @@ a {
 
 p {
   font-size: 18px;
-  font-weight: 800;
-  padding-bottom: 1em;
+  padding-bottom: .75em;
+  padding-top: .5em;
 }
 
 label {
-  font-size: 16px;
+  font-size: 1.30em;
   margin-top: 1em;
 }
 
-button {
-  margin-top: 1em;
+  button {
+    margin-top: 1em;
+    background-color: #FFE7E7;
+    background-position: 0 0;
+    border: 1px solid #FEE0E0;
+    border-radius: 11px;
+    box-sizing: border-box;
+    color: rgb(52, 78, 129);
+    cursor: pointer;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 33.4929px;
+    padding: 2px 12px;
+    text-align: left;
+    text-decoration: none;
+    text-shadow: none;
+    text-underline-offset: 1px;
+    transition: border .2s ease-in-out,box-shadow .2s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    word-break: break-word;
+  }
+  
+  button:active,
+  button-:hover,
+  button-45:focus {
+    outline: 0;
+  }
+  
+  
+  button:active {
+    background-color: #365ca4;
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px 0 inset;
+    color: #FFFFFF;
+  }
+  
+  button:hover {
+    background-color: #FFE3E3;
+    border-color: #FAA4A4;
+  }
+
+button:active:hover,
+button:focus:hover,
+button:focus {
+  background-color: rgb(156, 184, 240);
+  box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px 0 inset;
+  color: #FFFFFF;
 }
 
 .recipeHere {
   position:relative;
-}
-
-.recipeHere:hover {
-  border: 1px solid red;
-  padding: 8px, 8px;
-  border-radius: 8px;
 }
 
 .recipeHere:hover .trashCan {
@@ -90,3 +131,16 @@ button {
   margin: 8px, 8px;
 }
 
+span {
+  font-size: 1.25em;
+  font-weight: bold;
+}
+
+h3 {
+  padding-bottom: .5em;
+  font-weight: bold;
+}
+
+.form-control {
+  font-size: 1.25em;
+}
